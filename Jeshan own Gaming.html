@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeshan's Futuristic Gaming Hub</title>
+<style>
+/* ===== Body & Floating Particles Background ===== */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #0b0c10;
+  color: #ffffffc7;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(255,0,150,0.05) 1px, transparent 1px),
+              radial-gradient(circle, rgba(0,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  animation: moveParticles 20s linear infinite;
+}
+@keyframes moveParticles {
+  0% {background-position:0 0,0 0;}
+  100% {background-position:500px 500px,-500px 500px;}
+}
+
+/* ===== Header ===== */
+header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0,0,0,0.85);
+  padding: 20px;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 0 20px #ff00ff;
+}
+header h1 {
+  margin: 0;
+  font-size: 42px;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff,0 0 20px #ff00ff;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+nav a:hover { color: #00ffff; }
+
+/* ===== Sections ===== */
+section { padding: 50px 20px; max-width: 1200px; margin: auto; }
+section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* ===== Poll ===== */
+.poll { text-align: center; margin-bottom: 40px; }
+.poll label {
+  padding: 10px 25px;
+  background-color: #ff00ff;
+  border-radius: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.poll label:hover { background-color: #ff66ff; }
+.poll input { display: none; }
+
+/* ===== Game Cards ===== */
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.game-card {
+  background: rgba(0,0,0,0.85);
+  border: 2px solid #1adddd;
+  border-radius: 15px;
+  width: 220px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.game-card:hover {
+  transform: translateY(-10px) rotate(-2deg);
+  box-shadow: 0 0 25px #00ffff, 0 0 50px #ff00ff;
+}
+.game-card img { width: 100%; border-radius: 10px; }
+.game-card h3 { margin: 15px 0 10px; color: #ff00ff; }
+.game-card p { font-size: 14px; height: 60px; color: #ccc; }
+.game-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #00ffff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.game-card a:hover { background-color: #00ffcc; }
+
+/* ===== About Me - Typing Effect ===== */
+.about p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 20px;
+  border-right: 3px solid #00ffff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 8s steps(100) forwards;
+}
+@keyframes typing { to { width: 100%; } }
+
+/* Neon Text */
+.neon-text { color: #ff00ff; text-shadow:0 0 5px #ff00ff,0 0 10px #ff00ff,0 0 20px #00ffff; }
+
+/* Skills Bars */
+.skills { max-width: 600px; margin: 30px auto; }
+.skill-bar {
+  display: inline-block; height: 20px;
+  background: linear-gradient(90deg,#0ff,#ff00ff);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0ff,0 0 20px #ff00ff;
+}
+.skills p { margin: 10px 0; color: #fff; }
+
+/* Contact Links */
+.contact p a { color: #00ffff; }
+
+/* Footer */
+footer { text-align: center; padding: 20px; background-color: rgba(0,0,0,0.85); font-size: 16px; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jeshan's Futuristic Gaming Hub 🎮</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#games">Games</a>
+    <a href="#about">About Me</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h2>Welcome to Jeshan's Gaming World!</h2>
+  <div class="poll">
+    <p>Are you interested in gaming?</p>
+    <input type="radio" id="yes" name="interest" onclick="vote('Yes')">
+    <label for="yes">Yes</label>
+    <input type="radio" id="no" name="interest" onclick="vote('No')">
+    <label for="no">No</label>
+    <p id="pollResult" style="margin-top:20px;font-size:18px;"></p>
+  </div>
+</section>
+
+<section id="games">
+  <h2>Games</h2>
+  <div class="games-container">
+    <!-- Example Game Cards -->
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/PUBG_cover_art.jpg" alt="PUBG">
+      <h3>PUBG</h3>
+      <p>Battle Royale: survive, loot, be last standing.</p>
+      <a href="https://www.pubg.com/" target="_blank">Play / More Info</a>
+    </div>
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Free_Fire_cover.jpg" alt="Free Fire">
+      <h3>Free Fire</h3>
+      <p>Fast-paced mobile Battle Royale game.</p>
+      <a href="https://ff.garena.com/" target="_blank">Play / More Info</a>
+    </div>
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Fortnite_cover.jpg/220px-Fortnite_cover.jpg" alt="Fortnite">
+      <h3>Fortnite</h3>
+      <p>Battle Royale: build, survive, defeat opponents online.</p>
+      <a href="https://www.epicgames.com/fortnite/en-US/home" target="_blank">Play / More Info</a>
+    </div>
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/0e/Valorant_cover_art.jpg" alt="Valorant">
+      <h3>Valorant</h3>
+      <p>Team-based tactical shooter with unique agents.</p>
+      <a href="https://playvalorant.com/" target="_blank">Play / More Info</a>
+    </div>
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/90/CSGO_cover.jpg" alt="CSGO">
+      <h3>CS:GO</h3>
+      <p>Classic FPS with competitive multiplayer.</p>
+      <a href="https://blog.counter-strike.net/" target="_blank">Play / More Info</a>
+    </div>
+    <div class="game-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/cb/Apex_Legends_cover_art.jpg" alt="Apex Legends">
+      <h3>Apex Legends</h3>
+      <p>Hero-based Battle Royale with unique abilities.</p>
+      <a href="https://www.ea.com/games/apex-legends" target="_blank">Play / More Info</a>
+    </div>
+    <!-- Add more game cards: Overwatch 2, Rainbow Six Siege, Destiny 2, Escape from Tarkov, Paladins, Warface, CrossFire, CoD: Cold War, CoD Mobile, Halo Infinite, The Division 2 etc. -->
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2 style="color:#0ff; text-shadow:0 0 10px #0ff,0 0 20px #0ff;">About Me</h2>
+ <center> <p class="typing">Hi! I'm <span class="neon-text">Jeshan</span>, a futuristic web & gaming enthusiast. </p></center>
+  <div class="skills">
+    <center><p>Gaming: <span class="skill-bar" style="width:100%;"></span></p>
+    <center></center> <p>HTML/CSS: <span class="skill-bar" style="width:85%;"></span></p>
+    <p>JavaScript: <span class="skill-bar" style="width:100%;"></span></ <p>JavaScript: <span class="skill-bar" style="width:100%;"></span></p>
+   <p>JavaScript: <span class="skill-bar" style="width:100%;"></span></p>
+    <p>Creativity: <span class="skill-bar" style="width:95%;"></span></p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact Me</h2>
+ <center> <p>Phone: 0764695708</p>
+  <p>Email: <a href="mailto:jeshanjeshan74@gmail.com">jeshanjeshan74@gmail.com</a></p>
+  <p>Follow me for collaborations, gaming ideas, or tech projects!</p></center>
+</section>
+
+<footer>
+  &copy; 2026 Jeshan's Futuristic Gaming Hub. All rights reserved.
+</footer>
+
+<script>
+function vote(answer) {
+  document.getElementById('pollResult').innerText = `You voted: ${answer}! 🎮`;
+}
+</script>
+
+</body>
+</html>
