@@ -15,4 +15,4 @@ You can view the live website here: [Live Website](https://jeshanjeshan74-collab
 2. Open `index.html` in a browser to view the website.
 
 ## Author
-Jeshan
+Victor Jeshan
